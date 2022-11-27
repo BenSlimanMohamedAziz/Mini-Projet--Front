@@ -1,0 +1,33 @@
+<br>
+<div class="container">
+  <h2>Liste Animaux :</h2>
+<div class="card shadow mb-4">
+  <form class="form-inline">
+    <div class="form-group mx-sm-4 mb-1 mt-1 ">
+    <label><b>Rechercher Par Nom Animal : </b>&nbsp;</label>
+    <input type="search" class="form-control" #searchTerm (keyup)="onKeyUp(searchTerm.value)">
+   <!-- <button type="submit" (click)="rechercherAnims()" class="btn btn-primary mb-2 ml-2">Rechercher</button>
+    <a href="/animals"><button type="button" class="btn btn-warning mb-2 ml-2">Annuler</button></a>-->
+    </div>
+    </form>
+<div class="card-body">
+<table class="table table-striped">
+  <tr><th style="text-align:center;" colspan="6">Animaux</th></tr>
+<tr> <th>Id</th><th>Nom</th> <th>Groupe</th><th>Date Ajout</th> <th colspan="2">Actions</th></tr>
+<tbody *ngFor="let animal of animals | paginate: { itemsPerPage: 3, currentPage: page,
+totalItems:count}; let i=index">
+<tr>
+<td>{{animal.idAnimal}}</td>
+<td>{{animal.nomAnimal}}</td>
+<td>{{animal.groupe.nomGrp}}</td>
+<td>{{animal.dateAjout | date:'dd/MM/yyyy'}}</td>
+<td><a class="btn btn-danger" (click)="supprimerAnimals(animal)">Supprimer</a></td>
+<td><a class="btn btn-success" [routerLink]="['/updateAnimal',animal.idAnimal]">Modifier</a></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<pagination-controls (pageChange)="page=$event"></pagination-controls>
+</div>
+</div>
+</div>

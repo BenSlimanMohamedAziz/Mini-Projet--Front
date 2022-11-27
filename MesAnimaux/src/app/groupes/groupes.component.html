@@ -1,0 +1,23 @@
+<div class="container">
+  <h2>Liste Groupes :</h2>
+  <div class="card shadow mb-4">
+  <div class="card-body">
+  <table class="table table-striped">
+    <tr><th style="text-align:center;" colspan="5">Groupes</th></tr>
+  <tr> <th>Id</th><th>Nom</th> <th>Description</th><th colspan="2">Actions</th> </tr>
+  <tbody *ngFor="let groupe of groupes | paginate: { itemsPerPage: 3, currentPage: page,
+    totalItems:count}; let i=index" > <!--  -->
+  <tr>
+  <td> {{groupe.idGrp}}</td>
+  <td> {{groupe.nomGrp}}</td>
+  <td> {{groupe.descriptionGrp}} </td>
+  <td><a class="btn btn-danger" (click)="supprimerGroup(groupe)" >Supprimer</a></td>
+  <td><a class="btn btn-success" [routerLink]="['/updateGrp',groupe.idGrp]" >Modifier</a></td>
+  </tr>
+  </tbody>
+  </table>
+  <hr>
+  <pagination-controls (pageChange)="page=$event"></pagination-controls>
+  </div>
+  </div>
+  </div>

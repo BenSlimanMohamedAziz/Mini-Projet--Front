@@ -1,0 +1,34 @@
+<div class="container">
+  <div>
+  <h2>Ajouter un Groupe :</h2>
+  </div>
+  <form >
+    <div hidden class="form-group">
+    <label >ID Groupe</label>
+    <input type="text" [(ngModel)]="newGrp.idGrp"
+    name="idGrp" class="form-control">
+    </div>
+    <div class="form-group" >
+    <label >Nom Groupe</label>
+    <input type="text"[(ngModel)]= "newGrp.nomGrp"
+    name="nomGrp" class="form-control" required minlength="4" #name="ngModel">
+    <span *ngIf="name.invalid && name.touched"
+            class="text-danger">
+            Nom Groupe Invalide*
+          </span>
+    </div>
+    <div class="form-group">
+    <label >Description Groupe</label>
+    <textarea [(ngModel)]= "newGrp.descriptionGrp"
+    name="descriptionGrp" class="form-control" required #desc="ngModel"></textarea>
+    <span *ngIf="desc.invalid && desc.touched"
+    class="text-danger">
+    Saisir Description*
+  </span>
+    </div>
+    <div class="form-group" align="center">
+    <button type="submit" (click)="addGrp()"class="btn btn-success">Ajouter</button>
+    <a href="/animals"><button type="button" class="btn btn-secondary">Annuler</button></a>
+    </div>
+    </form>
+    </div>

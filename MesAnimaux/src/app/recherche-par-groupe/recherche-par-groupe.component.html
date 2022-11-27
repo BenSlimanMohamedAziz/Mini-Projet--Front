@@ -1,0 +1,30 @@
+<br>
+<div class="container">
+<div class="card shadow mb-4">
+<div class="card-body">
+  <div class="col-sm-4 col-md-4 col-lg-4 mb-4">
+    <form>
+    <label>Groupes </label>
+    <select class="form-control form-control-lg" id="idGrp" name="idGrp"
+    [(ngModel)]="IdGrp" (change)="onChange()">
+    <option *ngFor="let grp of groupes" value="{{grp.idGrp}}">
+    {{grp.nomGrp}}
+     </option>
+    </select>
+    </form>
+    </div>
+<table class="table table-striped">
+  <tr><th style="text-align:center;" colspan="4">Animaux</th></tr>
+<tr> <th>Id</th><th>Nom</th> <th>Groupe</th><th>Date Ajout</th> </tr>
+<tbody *ngFor="let animals of animals">
+<tr>
+<td>{{animals.idAnimal}}</td>
+<td>{{animals.nomAnimal}}</td>
+<td>{{animals.groupe.nomGrp}}</td>
+<td>{{animals.dateAjout | date:'dd/MM/yyyy'}}</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>

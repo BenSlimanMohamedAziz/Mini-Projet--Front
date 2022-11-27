@@ -1,0 +1,69 @@
+<div class="container">
+  <div>
+    <h2>Modifier un Animal :</h2>
+  </div>
+  <form>
+<table align="center" width="100%">
+  <tr>
+   <th>   <label>ID Animal</label></th>
+ <td>     <input
+        readonly
+        type="text"
+        [(ngModel)]="currentAnimal.idAnimal"
+        name="idAnimal"
+        class="form-control"
+      /></td>
+</tr>
+<tr>
+  <th> <label>Nom Animal</label></th>
+  <td> <input
+        type="text"
+        [(ngModel)]="currentAnimal.nomAnimal"
+        name="nomAnimal"
+        class="form-control" required minlength="4" #name="ngModel"
+      />
+      <span *ngIf="name.invalid && name.touched"
+    class="text-danger">
+    Nom Animal Invalide*
+  </span></td>
+    </tr>
+      <tr>
+        <th> <label>Groupe</label></th>
+        <td> <select
+        class="form-control form-control-lg"
+        id="idGrp"
+        name="idGrp"
+        [(ngModel)]="updatedGrpId" required #select="ngModel">
+        <option *ngFor="let grp of groupes" [value]="grp.idGrp">
+          {{ grp.nomGrp }}
+        </option>
+      </select>
+      <span *ngIf="select.invalid && select.touched "
+            class="text-danger">
+            Choisir Groupe*
+          </span></td>
+    </tr>
+      <tr>
+        <th> <label>Date Ajout</label></th>
+        <td> <input
+        type="date"
+        [ngModel]="currentAnimal.dateAjout | date: 'yyyy-MM-dd'"
+        (ngModelChange)="currentAnimal.dateAjout = $event"
+        name="dateAjout"
+        class="form-control" required #date="ngModel"
+      /> <span *ngIf="date.invalid && date.touched "
+      class="text-danger">
+      Saisir Date*
+    </span></td>
+
+    </tr>
+
+      <tr> <th style="text-align: center;" colspan="2"> <button type="submit" (click)="updateAnimal()" class="btn btn-success">
+        Modifer
+      </button>
+      <a href="/animals"><button type="button" class="btn btn-secondary">
+        Annuler
+      </button></a></th></tr>
+</table>
+  </form>
+</div>
