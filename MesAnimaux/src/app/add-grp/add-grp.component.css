@@ -1,0 +1,19 @@
+h2{
+  text-align: center;
+  margin-top: 20px;
+  color: rgb(4, 4, 97);
+  font-size: 3em;
+  font-family: 'Times New Roman', Times, serif;
+  margin-bottom: 15px;
+}
+button{
+  margin: 10px;
+  text-align: center;
+  width: 120px;
+}
+form{
+  border: 1px solid rgba(0, 0, 0, 0.267) ;
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 58px;
+}
